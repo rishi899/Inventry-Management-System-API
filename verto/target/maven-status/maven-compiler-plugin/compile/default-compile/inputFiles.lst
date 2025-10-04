@@ -1,0 +1,8 @@
+C:\Users\PALAK\Desktop\verto\src\main\java\com\verto\inventory\InventoryManagementApplication.java
+C:\Users\PALAK\Desktop\verto\src\main\java\com\verto\inventory\entity\Product.java
+C:\Users\PALAK\Desktop\verto\src\main\java\com\verto\inventory\controller\ProductController.java
+C:\Users\PALAK\Desktop\verto\src\main\java\com\verto\inventory\dto\StockUpdateRequest.java
+C:\Users\PALAK\Desktop\verto\src\main\java\com\verto\inventory\config\OpenApiConfig.java
+C:\Users\PALAK\Desktop\verto\src\main\java\com\verto\inventory\repository\ProductRepository.java
+C:\Users\PALAK\Desktop\verto\src\main\java\com\verto\inventory\service\ProductService.java
+C:\Users\PALAK\Desktop\verto\src\main\java\com\verto\inventory\exception\GlobalExceptionHandler.java

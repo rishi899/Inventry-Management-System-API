@@ -1,0 +1,8 @@
+com\verto\inventory\repository\ProductRepository.class
+com\verto\inventory\exception\GlobalExceptionHandler.class
+com\verto\inventory\config\OpenApiConfig.class
+com\verto\inventory\dto\StockUpdateRequest.class
+com\verto\inventory\service\ProductService.class
+com\verto\inventory\entity\Product.class
+com\verto\inventory\controller\ProductController.class
+com\verto\inventory\InventoryManagementApplication.class

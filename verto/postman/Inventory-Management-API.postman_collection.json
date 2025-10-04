@@ -1,0 +1,326 @@
+{
+	"info": {
+		"_postman_id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+		"name": "Inventory Management API",
+		"description": "Complete API collection for the Spring Boot Inventory Management System",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Product Management",
+			"item": [
+				{
+					"name": "Create Product",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Gaming Laptop\",\n  \"description\": \"High-performance gaming laptop with RTX 4070\",\n  \"stockQuantity\": 15,\n  \"lowStockThreshold\": 5\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/products",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"products"
+							]
+						},
+						"description": "Create a new product in the inventory"
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/products",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"products"
+							]
+						},
+						"description": "Retrieve all products from the inventory"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Product by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/products/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"products",
+								"1"
+							]
+						},
+						"description": "Retrieve a specific product by its ID"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Product",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Updated Gaming Laptop\",\n  \"description\": \"Updated high-performance gaming laptop with RTX 4070\",\n  \"lowStockThreshold\": 3\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/products/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"products",
+								"1"
+							]
+						},
+						"description": "Update product details (not stock quantity)"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Product",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/products/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"products",
+								"1"
+							]
+						},
+						"description": "Delete a product from the inventory"
+					},
+					"response": []
+				}
+			],
+			"description": "CRUD operations for product management"
+		},
+		{
+			"name": "Inventory Management",
+			"item": [
+				{
+					"name": "Increase Stock",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"quantity\": 10\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/products/1/increase",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"products",
+								"1",
+								"increase"
+							]
+						},
+						"description": "Increase stock quantity for a product"
+					},
+					"response": []
+				},
+				{
+					"name": "Decrease Stock (Valid)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"quantity\": 5\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/products/1/decrease",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"products",
+								"1",
+								"decrease"
+							]
+						},
+						"description": "Decrease stock quantity for a product (valid case)"
+					},
+					"response": []
+				},
+				{
+					"name": "Decrease Stock (Invalid - Insufficient Stock)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"quantity\": 100\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/products/1/decrease",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"products",
+								"1",
+								"decrease"
+							]
+						},
+						"description": "Attempt to decrease stock below zero (should return 400 Bad Request)"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Low Stock Products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/products/low-stock",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"products",
+								"low-stock"
+							]
+						},
+						"description": "Get products with stock below their low stock threshold"
+					},
+					"response": []
+				}
+			],
+			"description": "Inventory management operations for stock control"
+		},
+		{
+			"name": "Error Scenarios",
+			"item": [
+				{
+					"name": "Get Non-existent Product",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/products/999",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"products",
+								"999"
+							]
+						},
+						"description": "Try to get a product that doesn't exist (should return 404)"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Non-existent Product",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Non-existent Product\",\n  \"description\": \"This product doesn't exist\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/products/999",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"products",
+								"999"
+							]
+						},
+						"description": "Try to update a product that doesn't exist (should return 404)"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Product with Invalid Data",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"\",\n  \"stockQuantity\": -5\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/products",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"products"
+							]
+						},
+						"description": "Try to create a product with invalid data (should return 400)"
+					},
+					"response": []
+				}
+			],
+			"description": "Test error handling scenarios"
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8080",
+			"type": "string"
+		}
+	]
+}

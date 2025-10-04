@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.verto.inventory.controller.ProductControllerTest
+-------------------------------------------------------------------------------
+Tests run: 14, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 9.415 s - in com.verto.inventory.controller.ProductControllerTest
